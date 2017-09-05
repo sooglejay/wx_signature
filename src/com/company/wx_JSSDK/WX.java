@@ -17,13 +17,10 @@ import java.util.UUID;
  */
 public class WX {
     public static String URL[] = {
-            "http://test.sighub.com/ziyan/login.html",
-            "http://test.sighub.com/ziyan/fill_info.html",
-            "http://test.sighub.com/ziyan/search.html",
-            "http://test.sighub.com/ziyan/index.html"
+
     };
-    public static final String APP_ID = "wxb76c5258ffa59386";
-    public static final String APP_SECRET = "80b8d4e879263070071d9736d511f3b5";
+    public static final String APP_ID = "";
+    public static final String APP_SECRET = "";
 
     public static String getAccessToken() {
         String access_token = "";
@@ -110,7 +107,7 @@ public class WX {
     }
 
     public static void main(String[] args) {
-//        if (args == null || args.length < 1) return;
+        if (args == null || args.length < 1) return;
         //1、获取AccessToken
         String accessToken = getAccessToken();
 
@@ -124,7 +121,7 @@ public class WX {
         System.out.println("accessToken:" + accessToken + "\njsapi_ticket:" + jsapi_ticket + "\n时间戳：" + timestamp + "\n随机字符串：" + noncestr);
 
 
-        String url = URL[0];
+        String url = args[0];
         System.out.print("\nStart To url:" + url + "\n");
 
         //4、获取url
@@ -143,7 +140,7 @@ public class WX {
 
         //6、将字符串进行sha1加密
         String signature = SHA1(str);
-        System.out.print("{\"signature\":\""+signature+"\",\"noncestr\":\""+noncestr+"\",\"timestamp\":"+timestamp+"}");
+        System.out.print("{\"signature\":\"" + signature + "\",\"noncestr\":\"" + noncestr + "\",\"timestamp\":" + timestamp + "}");
 //        System.out.println("参数：" + str + "\n签名：" + signature);
 
     }
